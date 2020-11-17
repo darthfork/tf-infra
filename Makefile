@@ -5,10 +5,10 @@ all: plan apply
 vars:
 	@bash ${CURDIR}/build_tfvars.sh
 
-plan: build_vars
+plan: vars
 	terraform plan -var-file terraform.tfvars
 
-apply: build_vars
+apply: vars
 	terraform apply -var-file terraform.tfvars
 
 clean: 
