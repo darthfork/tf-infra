@@ -11,5 +11,5 @@ plan: vars
 apply: vars
 	terraform apply -var-file terraform.tfvars
 
-clean: 
+clean:
 	@rm *.tfvars
