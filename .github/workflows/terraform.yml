@@ -31,7 +31,7 @@ jobs:
 
     - name: Build Vars
       shell: bash
-      run: AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} ./build_tfvars.sh 
+      run: AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} bash ./build_tfvars.sh 
 
     - name: Terraform Plan
       run: make plan

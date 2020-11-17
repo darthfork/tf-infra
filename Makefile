@@ -3,7 +3,7 @@
 all: plan apply
 
 vars:
-	@${CURDIR}/build_tfvars.sh
+	@bash ${CURDIR}/build_tfvars.sh
 
 plan: build_vars
 	terraform plan -var-file terraform.tfvars
