@@ -11,3 +11,6 @@ all: plan
 plan: vars init
 
 apply: vars init plan
+
+clean:
+	@rm -rf .terraform terraform.tfvars
