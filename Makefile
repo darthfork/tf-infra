@@ -1,15 +1,13 @@
 .PHONY: all plan apply
 
-all: plan apply
+TARGETS := plan apply init vars shell
+RUNNER := ${CURDIR}/runner.sh
 
-vars:
-	@bash ${CURDIR}/build_tfvars.sh
+$(TARGETS):
+	@${RUNNER} $@
 
-plan: vars
-	terraform plan -var-file terraform.tfvars
+all: plan
 
-apply: vars
-	terraform apply -var-file terraform.tfvars
+plan: vars init
 
-clean:
-	@rm *.tfvars
+apply: vars init plan
