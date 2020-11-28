@@ -33,5 +33,6 @@ docker run -it\
     -e AWS_ACCESS_KEY_ID\
     -e AWS_SECRET_ACCESS_KEY\
     -e AWS_ACCOUNT_NUMBER\
+    --user "$(id -u):$(id -g)"\
     -h dorker_runner\
     "$IMAGE" $ACTION
