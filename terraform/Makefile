@@ -10,3 +10,6 @@ plan:
 
 apply:
 	$(TF_BIN) apply -var-file terraform.tfvars
+
+clean:
+	@rm -rf .terraform terraform.tfvars

@@ -14,4 +14,4 @@ plan: vars init
 apply: vars init plan
 
 clean:
-	@rm -rf $(TF_DIR)/.terraform $(TF_DIR)/terraform.tfvars
+	@make -C terraform clean
