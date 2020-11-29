@@ -15,7 +15,7 @@ TARGET=$1
 declare -A actions=(
     [shell]="/bin/bash"
     [init]="terraform init"
-    [vars]="/usr/bin/env bash ./build_tfvars.sh"
+    [vars]="./build_tfvars.sh"
     [plan]="terraform plan -var-file terraform.tfvars"
     [apply]="terraform apply -var-file terraform.tfvars"
 )
