@@ -11,13 +11,14 @@ EOF
 IMAGE="darthfork/dorker:latest"
 
 TARGET=$1
+TF_DIR=terraform
 
 declare -A actions=(
     [shell]="/bin/bash"
-    [init]="terraform init"
     [vars]="./build_tfvars.sh"
-    [plan]="terraform plan -var-file terraform.tfvars"
-    [apply]="terraform apply -var-file terraform.tfvars"
+    [init]="make -C ${TF_DIR} init"
+    [plan]="make -C ${TF_DIR} plan"
+    [apply]="make -C ${TF_DIR} apply"
 )
 
 ACTION=${actions[$TARGET]}
