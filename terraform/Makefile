@@ -6,7 +6,7 @@ init:
 	$(TF_BIN) init
 
 plan:
-	$(TF_BIN) plan -var-file terraform.tfvars 
+	$(TF_BIN) plan -var-file terraform.tfvars
 
 apply:
 	$(TF_BIN) apply -var-file terraform.tfvars
