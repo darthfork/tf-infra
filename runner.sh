@@ -8,7 +8,9 @@ Must specify action (shell|init|vars|plan|apply)
 EOF
 }
 
-IMAGE="darthfork/dorker:latest"
+VERSION=fedora32
+
+IMAGE="darthfork/dorker:$VERSION"
 
 TARGET=$1
 TF_DIR=terraform
