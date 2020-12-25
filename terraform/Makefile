@@ -6,10 +6,14 @@ init:
 	$(TF_BIN) init
 
 plan:
-	$(TF_BIN) plan -var-file terraform.tfvars
+	$(TF_BIN) plan -var-file terraform.tfvars -out CURRENTPLAN.tfplan
 
 plan_nc:
-	$(TF_BIN) plan -input=false -no-color -var-file terraform.tfvars
+	$(TF_BIN) plan\
+		-input=false\
+		-no-color\
+		-var-file terraform.tfvars\
+		-out CURRENTPLAN.tfplan
 
 apply:
 	$(TF_BIN) apply -var-file terraform.tfvars
