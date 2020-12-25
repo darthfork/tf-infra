@@ -1,3 +1,4 @@
 *.tfvars
+*.tfplan
 .terraform/
 *.lock.hcl
