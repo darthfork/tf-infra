@@ -8,6 +8,9 @@ init:
 plan:
 	$(TF_BIN) plan -var-file terraform.tfvars
 
+plan_nc:
+	$(TF_BIN) plan -input=false -no-color -var-file terraform.tfvars
+
 apply:
 	$(TF_BIN) apply -var-file terraform.tfvars
 
