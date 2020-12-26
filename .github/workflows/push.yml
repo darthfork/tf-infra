@@ -63,9 +63,9 @@ jobs:
             body: process.env.STDOUT
           })
 
-    # Temporarily disabling
-    # - name: Terraform Apply
-    #   env:
-    #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #   run: make -C terraform apply
+    - name: Terraform Apply
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: echo "Temporarily disabling terraform apply"
+      # run: make -C terraform apply
