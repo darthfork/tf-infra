@@ -49,7 +49,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: make -C terraform plan_nc
 
-    - name: Terraform Comment
+    - name: Terraform Issue Comment
       uses: actions/github-script@0.9.0
       env:
         STDOUT: "```${{ steps.plan.outputs.stdout }}```"

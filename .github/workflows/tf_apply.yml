@@ -48,6 +48,20 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: make -C terraform plan
 
+    - name: Terraform Comment
+      uses: actions/github-script@0.9.0
+      env:
+        STDOUT: "```${{ steps.plan.outputs.stdout }}```"
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          github.repos.createCommitComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            commit_sha: context.sha,
+            body: process.env.STDOUT
+          })
+
     # Temporarily disabling
     # - name: Terraform Apply
     #   env:
