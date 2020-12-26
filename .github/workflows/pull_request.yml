@@ -1,12 +1,14 @@
-name: Terraform Apply
+name: Pull Request
+# Run terraform plan on pull requests to master
 
 on:
-  push:
+  pull_request:
     branches: [ master ]
 
+
 jobs:
-  terraform_apply:
-    name: Terraform Apply
+  terraform_plan:
+    name: Terraform Plan
     runs-on: ubuntu-20.04
 
     defaults:
@@ -48,23 +50,16 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: make -C terraform plan_nc
 
-    - name: Terraform Comment
+    - name: Terraform Issue Comment
       uses: actions/github-script@0.9.0
       env:
         STDOUT: "```${{ steps.plan.outputs.stdout }}```"
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
-          github.repos.createCommitComment({
+          github.issues.createComment({
+            issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            commit_sha: context.sha,
             body: process.env.STDOUT
           })
-
-    # Temporarily disabling
-    # - name: Terraform Apply
-    #   env:
-    #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #   run: make -C terraform apply
