@@ -32,10 +32,9 @@ if [ -z "$ACTION" ]; then
 fi
 
 docker run -it\
-    -v "$PWD":/workspace\
+    -v "$PWD":/home/darthfork/workspace\
     -e AWS_ACCESS_KEY_ID\
     -e AWS_SECRET_ACCESS_KEY\
     -e AWS_ACCOUNT_NUMBER\
-    --user "$(id -u):$(id -g)"\
-    -h dorker_runner\
+    -h dorker_tf_runner\
     "$IMAGE" $ACTION
