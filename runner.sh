@@ -32,7 +32,7 @@ if [ -z "$ACTION" ]; then
 fi
 
 docker run -it\
-    -v "$PWD":/home/darthfork/workspace\
+    -v "$PWD":/darthfork/workspace\
     -e AWS_ACCESS_KEY_ID\
     -e AWS_SECRET_ACCESS_KEY\
     -e AWS_ACCOUNT_NUMBER\
