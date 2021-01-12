@@ -1,9 +1,9 @@
 data "aws_ami" "centos" {
-  owners      = ["408911611184"]
+  owners      = ["125523088429"]
   most_recent = true
   filter {
     name = "image-id"
-    values = ["ami-0bae877500a55a46f"]
+    values = ["ami-059f1cc52e6c85908"]
   }
 }
 
