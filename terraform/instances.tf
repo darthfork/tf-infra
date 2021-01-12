@@ -13,10 +13,3 @@ resource "aws_instance" "dev" {
   key_name = "aws"
   vpc_security_group_ids = [aws_security_group.main.id]
 }
-
-resource "aws_instance" "de2v" {
-  ami = data.aws_ami.centos.id
-  instance_type = "t2.micro"
-  key_name = "aws"
-  vpc_security_group_ids = [aws_security_group.main.id]
-}
