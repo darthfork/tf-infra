@@ -64,3 +64,14 @@ jobs:
             repo: context.repo.repo,
             body: process.env.STDOUT
           })
+
+    - name: Infracost Diff
+      id: infracost
+      uses: infracost/infracost-gh-action@master
+      env:
+        INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        entrypoint: /scripts/ci/diff.sh
+        tfdir: terraform
+        tfflags: -var-file=terraform.tfvars
