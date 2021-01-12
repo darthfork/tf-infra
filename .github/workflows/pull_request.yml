@@ -71,6 +71,9 @@ jobs:
       env:
         INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
       with:
         entrypoint: /scripts/ci/diff.sh
         tfdir: terraform
