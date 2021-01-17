@@ -16,7 +16,7 @@ TARGET=$1
 TF_DIR=terraform
 
 declare -A actions=(
-    [shell]="/bin/bash"
+    [shell]="/usr/bin/env bash"
     [vars]="./build_tfvars.sh"
     [init]="make -C ${TF_DIR} init"
     [plan]="make -C ${TF_DIR} plan"
