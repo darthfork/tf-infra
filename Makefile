@@ -1,8 +1,8 @@
 .PHONY: all plan apply
 
-TARGETS := plan apply init vars shell
-TF_DIR 	:= terraform
-RUNNER 	:= ${CURDIR}/runner.sh
+TARGETS	:= plan apply init vars shell
+TF_DIR	:= terraform
+RUNNER	:= ${CURDIR}/runner.sh
 
 $(TARGETS):
 	@${RUNNER} $@

@@ -1,6 +1,6 @@
 .PHONY: plan apply init
 
-TF_BIN := terraform
+TF_BIN	:= terraform
 
 init:
 	$(TF_BIN) init
