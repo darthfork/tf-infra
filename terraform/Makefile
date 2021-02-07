@@ -1,4 +1,4 @@
-.PHONY: plan apply init
+.PHONY: plan plan_nc apply init clean
 
 TF_BIN	:= terraform
 
