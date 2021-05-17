@@ -18,7 +18,7 @@ data "aws_ami" "ubuntu_arm64" {
 
 
 resource "aws_instance" "dev" {
-  count                  = 1
+  count                  = 0
   ami                    = data.aws_ami.centos.id
   instance_type          = "t2.micro"
   user_data              = file("user_data/centos.sh")
@@ -27,7 +27,7 @@ resource "aws_instance" "dev" {
 }
 
 resource "aws_instance" "arm64_dev" {
-  count                  = 1
+  count                  = 0
   ami                    = data.aws_ami.ubuntu_arm64.id
   instance_type          = "a1.medium"
   user_data              = file("user_data/ubuntu.sh")
