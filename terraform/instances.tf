@@ -21,7 +21,7 @@ resource "aws_instance" "dev" {
   count                  = 1
   ami                    = data.aws_ami.centos.id
   instance_type          = "t2.micro"
-  #user_data              = file("user_data.sh")
+  user_data              = file("user_data/centos.sh")
   key_name               = "aws"
   vpc_security_group_ids = [aws_security_group.main.id]
 }
@@ -30,7 +30,7 @@ resource "aws_instance" "arm64_dev" {
   count                  = 1
   ami                    = data.aws_ami.ubuntu_arm64.id
   instance_type          = "a1.medium"
-  #user_data              = file("user_data.sh")
+  user_data              = file("user_data/ubuntu.sh")
   key_name               = "aws"
   vpc_security_group_ids = [aws_security_group.main.id]
 }
