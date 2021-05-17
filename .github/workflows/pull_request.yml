@@ -76,5 +76,5 @@ jobs:
         AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
       with:
         entrypoint: /scripts/ci/diff.sh
-        tfdir: terraform
-        tfflags: -var-file=terraform.tfvars
+        path: terraform
+        terraform_plan_flags: -var-file=terraform.tfvars
