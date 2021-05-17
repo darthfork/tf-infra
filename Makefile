@@ -2,7 +2,7 @@
 
 .DEFAULT_GOAL := all
 
-TARGETS	:= plan apply init vars shell
+TARGETS	:= plan apply init vars shell destroy
 TF_DIR	:= terraform
 RUNNER	:= ${CURDIR}/runner.sh
 

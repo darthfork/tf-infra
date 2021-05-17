@@ -18,5 +18,8 @@ plan_nc:
 apply:
 	$(TF_BIN) apply -auto-approve -var-file terraform.tfvars
 
+destroy:
+	$(TF_BIN) destroy
+
 clean:
 	@rm -rf .terraform terraform.tfvars
