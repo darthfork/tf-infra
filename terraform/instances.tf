@@ -26,7 +26,7 @@ resource "aws_instance" "dev" {
 }
 
 resource "aws_instance" "arm64_dev" {
-  count                  = 1
+  count                  = 0
   ami                    = data.aws_ami.centos_arm64.id
   instance_type          = "a1.medium"
   user_data              = file("user_data.sh")
