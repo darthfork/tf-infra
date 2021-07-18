@@ -1,8 +1,9 @@
 terraform {
   backend "s3" {
-    bucket = "tf-backend-abhishek"
-    key    = "terraform/terraform.tfstate"
-    region = "us-east-1"
+    bucket         = "tf-backend-abhishek"
+    key            = "terraform/terraform.tfstate"
+    dynamodb_table = "tf-state-lock"
+    region         = "us-east-1"
   }
   required_providers {
     aws = {
