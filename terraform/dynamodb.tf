@@ -9,4 +9,3 @@ resource "aws_dynamodb_table" "tf-state-lock" {
     type = "S"
   }
 }
-
