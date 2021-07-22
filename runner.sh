@@ -4,7 +4,7 @@ usage() {
 cat <<EOF
 Usage: $0 action
 
-Must specify action (shell|init|vars|plan|apply|destroy)
+Must specify action (shell|init|vars|plan|apply|destroy|fmt)
 EOF
 }
 
@@ -22,6 +22,7 @@ declare -A actions=(
     [plan]="make -C ${TF_DIR} plan"
     [apply]="make -C ${TF_DIR} apply"
     [destroy]="make -C ${TF_DIR} destroy"
+    [fmt]="make -C ${TF_DIR} fmt"
 )
 
 ACTION=${actions[$TARGET]}

@@ -21,5 +21,8 @@ apply:
 destroy:
 	$(TF_BIN) destroy
 
+fmt:
+	$(TF_BIN) fmt
+
 clean:
 	@rm -rf .terraform terraform.tfvars
