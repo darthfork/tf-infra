@@ -18,7 +18,7 @@ resource "aws_s3_bucket_policy" "tf-backend-policy" {
         Effect = "Allow",
         Principal = {
           "AWS" : [
-            "arn:aws:iam::${var.aws_account_number}:user/arai",
+            "arn:aws:iam::${var.aws_account_number}:user/${local.user_name}",
             "arn:aws:iam::${var.aws_account_number}:root"
           ]
         },
