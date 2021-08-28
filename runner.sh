@@ -37,6 +37,8 @@ docker run -it\
     -v "$PWD":/darthfork/workspace\
     -e AWS_ACCESS_KEY_ID\
     -e AWS_SECRET_ACCESS_KEY\
+    -e DO_TOKEN\
+    -e SSH_FINGERPRINT\
     -e AWS_ACCOUNT_NUMBER\
     -h dorker_tf_runner\
     "$IMAGE" $ACTION
