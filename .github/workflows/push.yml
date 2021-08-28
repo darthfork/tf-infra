@@ -29,14 +29,19 @@ jobs:
     - name: Terraform Init
       id: init
       env:
+        DO_TOKEN: ${{ secrets.DO_TOKEN }}
+        SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
       run: make -C terraform init
 
     - name: Build Vars
       id: vars
       shell: bash
       env:
+        DO_TOKEN: ${{ secrets.DO_TOKEN }}
+        SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
@@ -45,8 +50,11 @@ jobs:
     - name: Terraform Plan
       id: plan
       env:
+        DO_TOKEN: ${{ secrets.DO_TOKEN }}
+        SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
       run: make -C terraform plan_nc
 
     - name: Terraform Publish
@@ -67,6 +75,9 @@ jobs:
     - name: Terraform Apply
       id: apply
       env:
+        DO_TOKEN: ${{ secrets.DO_TOKEN }}
+        SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
       run: make -C terraform apply
