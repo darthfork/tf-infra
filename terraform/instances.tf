@@ -35,7 +35,7 @@ resource "aws_instance" "arm64_dev" {
 }
 
 resource "digitalocean_droplet" "do_dev" {
-  count              = 1
+  count              = "${var.do_instance_enable ? 1 : 0}"
   region             = var.do_region
   image              = "ubuntu-20-04-x64"
   name               = "devbox"
