@@ -8,6 +8,11 @@ variable "do_region" {
   default = "sfo3"
 }
 
+variable do_instance_enable {
+  type    = bool
+  default = true
+}
+
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_account_number" {}
