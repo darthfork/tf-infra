@@ -1,3 +1,3 @@
-# Terraform AWS Infrastructure
+# Terraform Infrastructure
 
-Terraform Managed AWS infra
+Infrastructure on AWS and Digital Ocean managed with terraform
