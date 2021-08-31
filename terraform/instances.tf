@@ -23,6 +23,14 @@ resource "aws_instance" "dev" {
   user_data              = file("user_data.sh")
   key_name               = "main"
   vpc_security_group_ids = [aws_security_group.main.id]
+  ebs_block_device {
+    device_name = "/dev/sda1"
+    volume_size = var.aws_instance_block_size
+  }
+  tags = {
+    Name = "amd64_dev"
+    arch = "amd64"
+  }
 }
 
 resource "aws_instance" "arm64_dev" {
@@ -32,6 +40,14 @@ resource "aws_instance" "arm64_dev" {
   user_data              = file("user_data.sh")
   key_name               = "main"
   vpc_security_group_ids = [aws_security_group.main.id]
+  ebs_block_device {
+    device_name = "/dev/sda1"
+    volume_size = var.aws_instance_block_size
+  }
+  tags = {
+    Name = "arm64_dev"
+    arch = "arm64"
+  }
 }
 
 resource "digitalocean_droplet" "do_dev" {

@@ -28,6 +28,11 @@ variable "do_instance_enable" {
   default = true
 }
 
+variable "aws_instance_block_size" {
+  type = number
+  default = 32
+}
+
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_account_number" {}
