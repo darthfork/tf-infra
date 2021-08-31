@@ -11,7 +11,7 @@ terraform {
       version = "~> 3.0"
     }
     digitalocean = {
-      source = "digitalocean/digitalocean"
+      source  = "digitalocean/digitalocean"
       version = "~> 2.0"
     }
   }
@@ -27,5 +27,5 @@ provider "aws" {
 }
 
 provider "digitalocean" {
-  token  = var.do_token
+  token = var.do_token
 }

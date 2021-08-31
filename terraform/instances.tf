@@ -17,7 +17,7 @@ data "aws_ami" "centos_arm64" {
 }
 
 resource "aws_instance" "dev" {
-  count                  = 0
+  count                  = var.aws_amd64_dev_enable ? 1 : 0
   ami                    = data.aws_ami.centos.id
   instance_type          = "t2.micro"
   user_data              = file("user_data.sh")
@@ -26,7 +26,7 @@ resource "aws_instance" "dev" {
 }
 
 resource "aws_instance" "arm64_dev" {
-  count                  = 0
+  count                  = var.aws_arm64_dev_enable ? 1 : 0
   ami                    = data.aws_ami.centos_arm64.id
   instance_type          = "a1.medium"
   user_data              = file("user_data.sh")
@@ -35,7 +35,7 @@ resource "aws_instance" "arm64_dev" {
 }
 
 resource "digitalocean_droplet" "do_dev" {
-  count              = "${var.do_instance_enable ? 1 : 0}"
+  count              = var.do_instance_enable ? 1 : 0
   region             = var.do_region
   image              = "ubuntu-20-04-x64"
   name               = "devbox"

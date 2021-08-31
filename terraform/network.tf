@@ -32,7 +32,7 @@ resource "aws_security_group" "main" {
 resource "digitalocean_firewall" "main" {
   name = "ssh-only-access"
 
-  droplet_ids = "${var.do_instance_enable ? [digitalocean_droplet.do_dev[0].id] : null}"
+  droplet_ids = var.do_instance_enable ? [digitalocean_droplet.do_dev[0].id] : null
 
   inbound_rule {
     protocol         = "tcp"

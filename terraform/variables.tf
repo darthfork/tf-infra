@@ -1,3 +1,8 @@
+locals {
+  vpc_id    = "vpc-63a2b319"
+  user_name = "arai"
+}
+
 variable "aws_region" {
   type    = string
   default = "us-east-1"
@@ -8,7 +13,17 @@ variable "do_region" {
   default = "sfo3"
 }
 
-variable do_instance_enable {
+variable "aws_amd64_dev_enable" {
+  type    = bool
+  default = false
+}
+
+variable "aws_arm64_dev_enable" {
+  type    = bool
+  default = false
+}
+
+variable "do_instance_enable" {
   type    = bool
   default = true
 }
