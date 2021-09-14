@@ -13,19 +13,19 @@ variable "do_region" {
   default = "sfo3"
 }
 
-variable "aws_amd64_dev_enable" {
+variable "enable_aws_amd64_dev" {
   type    = bool
   default = false
 }
 
-variable "aws_arm64_dev_enable" {
+variable "enable_aws_arm64_dev" {
   type    = bool
   default = false
 }
 
-variable "do_instance_enable" {
+variable "enable_do_instance" {
   type    = bool
-  default = true
+  default = false
 }
 
 variable "aws_instance_block_size" {
