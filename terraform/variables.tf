@@ -29,7 +29,7 @@ variable "enable_do_instance" {
 }
 
 variable "aws_instance_block_size" {
-  type = number
+  type    = number
   default = 32
 }
 

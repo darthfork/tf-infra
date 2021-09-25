@@ -1,25 +1,13 @@
-data "aws_ami" "centos" {
-  owners      = ["125523088429"]
-  most_recent = true
-  filter {
-    name   = "image-id"
-    values = ["ami-059f1cc52e6c85908"]
-  }
-}
-
-data "aws_ami" "centos_arm64" {
-  owners      = ["125523088429"]
-  most_recent = true
-  filter {
-    name   = "image-id"
-    values = ["ami-0c7ec43a152e9c107"]
-  }
+resource "aws_iam_instance_profile" "dev_instance_profile" {
+  name = "test_profile"
+  role = aws_iam_role.dev_instance_role.name
 }
 
 resource "aws_instance" "dev" {
   count                  = var.enable_aws_amd64_dev ? 1 : 0
   ami                    = data.aws_ami.centos.id
   instance_type          = "t2.micro"
+  iam_instance_profile   = aws_iam_instance_profile.dev_instance_profile.name
   user_data              = file("user_data.sh")
   key_name               = "main"
   vpc_security_group_ids = [aws_security_group.main.id]
@@ -37,6 +25,7 @@ resource "aws_instance" "arm64_dev" {
   count                  = var.enable_aws_arm64_dev ? 1 : 0
   ami                    = data.aws_ami.centos_arm64.id
   instance_type          = "a1.medium"
+  iam_instance_profile   = aws_iam_instance_profile.dev_instance_profile.name
   user_data              = file("user_data.sh")
   key_name               = "main"
   vpc_security_group_ids = [aws_security_group.main.id]
