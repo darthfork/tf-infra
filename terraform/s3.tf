@@ -47,25 +47,25 @@ resource "aws_s3_bucket_policy" "tf-management-trail-policy" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid = "AWSCloudTrailAclCheck",
-        Effect    = "Allow",
-        Principal = {
-          Service = "cloudtrail.amazonaws.com"
-        },
-        Resource  = aws_s3_bucket.tf-management-trail.arn
-        Action    = "s3:GetBucketAcl"
-      },
-      {
-        Sid = "AWSCloudTrailWrite",
+        Sid    = "AWSCloudTrailAclCheck",
         Effect = "Allow",
         Principal = {
           Service = "cloudtrail.amazonaws.com"
         },
-        Action = "s3:PutObject",
-        Resource = "${aws_s3_bucket.tf-management-trail.arn}/prefix/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+        Resource = aws_s3_bucket.tf-management-trail.arn
+        Action   = "s3:GetBucketAcl"
+      },
+      {
+        Sid    = "AWSCloudTrailWrite",
+        Effect = "Allow",
+        Principal = {
+          Service = "cloudtrail.amazonaws.com"
+        },
+        Action   = "s3:PutObject",
+        Resource = "${aws_s3_bucket.tf-management-trail.arn}/management/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
         Condition = {
           StringEquals = {
-            "s3:x-amz-acl": "bucket-owner-full-control"
+            "s3:x-amz-acl" : "bucket-owner-full-control"
           }
         }
       }
