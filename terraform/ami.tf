@@ -3,7 +3,7 @@ data "aws_ami" "centos" {
   most_recent = true
   filter {
     name   = "image-id"
-    values = ["ami-059f1cc52e6c85908"]
+    values = [var.aws_ami_centos_x86_64_id]
   }
 }
 
@@ -12,7 +12,7 @@ data "aws_ami" "centos_arm64" {
   most_recent = true
   filter {
     name   = "image-id"
-    values = ["ami-0c7ec43a152e9c107"]
+    values = [var.aws_ami_centos_arm64_id]
   }
 }
 

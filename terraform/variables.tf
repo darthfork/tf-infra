@@ -33,6 +33,16 @@ variable "aws_instance_block_size" {
   default = 32
 }
 
+variable "aws_ami_centos_x86_64_id" {
+  type    = string
+  default = "ami-059f1cc52e6c85908"
+}
+
+variable "aws_ami_centos_arm64_id" {
+  type    = string
+  default = "ami-0c7ec43a152e9c107"
+}
+
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_account_number" {}

@@ -5,6 +5,7 @@ terraform {
     dynamodb_table = "tf-state-lock"
     region         = "us-east-1"
   }
+  required_version = "~> 1.0.4"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
