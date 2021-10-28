@@ -1,3 +1,10 @@
+resource "aws_kms_key" "encryption_key" {
+  description = "KMS key for encryption"
+  tags = {
+    Name = "Default encryption key"
+  }
+}
+
 resource "aws_iam_role" "dev_instance_role" {
   name = "dev_instance_role"
 

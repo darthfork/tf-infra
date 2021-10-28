@@ -1,5 +1,3 @@
-data "aws_caller_identity" "current" {}
-
 resource "aws_s3_bucket" "tf-backend" {
   bucket = "tf-backend-abhishek"
 }
@@ -8,6 +6,10 @@ resource "aws_s3_bucket" "tf-management-trail" {
   bucket        = "tf-management-trail"
   force_destroy = true
 
+  logging {
+    target_bucket = aws_s3_bucket.tf-backend.id
+    target_prefix = "log/"
+  }
 }
 
 resource "aws_s3_bucket_policy" "tf-backend-policy" {
@@ -62,7 +64,7 @@ resource "aws_s3_bucket_policy" "tf-management-trail-policy" {
           Service = "cloudtrail.amazonaws.com"
         },
         Action   = "s3:PutObject",
-        Resource = "${aws_s3_bucket.tf-management-trail.arn}/management/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
+        Resource = "${aws_s3_bucket.tf-management-trail.arn}/management/AWSLogs/${var.aws_account_number}/*",
         Condition = {
           StringEquals = {
             "s3:x-amz-acl" : "bucket-owner-full-control"
