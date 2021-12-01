@@ -47,7 +47,6 @@ resource "digitalocean_droplet" "do_dev" {
   size               = "s-2vcpu-2gb-intel"
   backups            = true
   monitoring         = true
-  private_networking = true
   ssh_keys = [
     var.ssh_fingerprint
   ]
