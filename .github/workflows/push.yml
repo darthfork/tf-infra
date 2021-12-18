@@ -45,6 +45,10 @@ jobs:
       id: plan
       run: make -C terraform plan_nc
 
+    - name: Terraform Apply
+      id: apply
+      run: make -C terraform apply
+
     - name: Terraform Publish
       id: publish
       uses: actions/github-script@0.9.0
@@ -59,7 +63,3 @@ jobs:
             commit_sha: context.sha,
             body: process.env.STDOUT
           })
-
-    - name: Terraform Apply
-      id: apply
-      run: make -C terraform apply
