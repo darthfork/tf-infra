@@ -57,6 +57,14 @@ jobs:
     - name: Infracost Diff
       id: infracost
       uses: infracost/infracost-gh-action@master
+      env:
+        DO_TOKEN: ${{ secrets.DO_TOKEN }}
+        SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
+        INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         entrypoint: /scripts/ci/diff.sh
         path: terraform
