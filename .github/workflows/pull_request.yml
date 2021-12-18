@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       DO_TOKEN: ${{ secrets.DO_TOKEN }}
-      INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
       SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -61,22 +60,3 @@ jobs:
             repo: context.repo.repo,
             body: process.env.STDOUT
           })
-
-     - name: Terraform show
-       run: terraform show -json CURRENTPLAN.tfplan > plan.json
-       working-directory: ${{ env.working-directory }}
-
-     - name: Setup Infracost
-       uses: infracost/actions/setup@v1
-       with:
-         api-key: ${{ secrets.INFRACOST_API_KEY }}
-
-     - name: Generate Infracost JSON
-       run: infracost breakdown --path plan.json --format json --out-file /tmp/infracost.json
-       working-directory: ${{ env.working-directory }}
-
-     - name: Post Infracost comment
-       uses: infracost/actions/comment@v1
-       with:
-         path: /tmp/infracost.json
-         behavior: update
