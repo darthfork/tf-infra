@@ -10,6 +10,12 @@ jobs:
   terraform_plan:
     name: Terraform Plan
     runs-on: ubuntu-20.04
+    env:
+      DO_TOKEN: ${{ secrets.DO_TOKEN }}
+      SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
 
     defaults:
       run:
@@ -29,33 +35,15 @@ jobs:
 
     - name: Terraform Init
       id: init
-      env:
-        DO_TOKEN: ${{ secrets.DO_TOKEN }}
-        SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
       run: make -C terraform init
 
     - name: Build Vars
       id: vars
       shell: bash
-      env:
-        DO_TOKEN: ${{ secrets.DO_TOKEN }}
-        SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
       run: ./build_tfvars.sh
 
     - name: Terraform Plan
       id: plan
-      env:
-        DO_TOKEN: ${{ secrets.DO_TOKEN }}
-        SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
       run: make -C terraform plan_nc
 
     - name: Terraform Publish
@@ -72,19 +60,3 @@ jobs:
             repo: context.repo.repo,
             body: process.env.STDOUT
           })
-
-    - name: Infracost Diff
-      id: infracost
-      uses: infracost/infracost-gh-action@master
-      env:
-        INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DO_TOKEN: ${{ secrets.DO_TOKEN }}
-        SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
-      with:
-        entrypoint: /scripts/ci/diff.sh
-        path: terraform
-        terraform_plan_flags: -var-file=terraform.tfvars
