@@ -40,13 +40,13 @@ resource "aws_instance" "arm64_dev" {
 }
 
 resource "digitalocean_droplet" "do_dev" {
-  count              = var.enable_do_instance ? 1 : 0
-  region             = var.do_region
-  image              = "ubuntu-20-04-x64"
-  name               = "devbox"
-  size               = "s-2vcpu-2gb-intel"
-  backups            = true
-  monitoring         = true
+  count      = var.enable_do_instance ? 1 : 0
+  region     = var.do_region
+  image      = "ubuntu-20-04-x64"
+  name       = "devbox"
+  size       = "s-2vcpu-2gb-intel"
+  backups    = true
+  monitoring = true
   ssh_keys = [
     var.ssh_fingerprint
   ]
