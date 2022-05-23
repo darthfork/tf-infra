@@ -8,7 +8,7 @@ Must specify action (shell|init|vars|plan|apply|destroy|fmt)
 EOF
 }
 
-VERSION=fedora35
+VERSION=fedora36
 
 IMAGE="darthfork/dorker:$VERSION"
 
