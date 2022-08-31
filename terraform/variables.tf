@@ -45,7 +45,7 @@ variable "aws_ami_centos_x86_64_id" {
 
 variable "aws_ami_centos_arm64_id" {
   type    = string
-  default = "ami-0c7ec43a152e9c107"
+  default = "ami-061a486e54da518df"
 }
 
 variable "aws_access_key" {}
