@@ -40,7 +40,7 @@ variable "aws_ami_owner_id" {
 
 variable "aws_ami_centos_x86_64_id" {
   type    = string
-  default = "ami-059f1cc52e6c85908"
+  default = "ami-05d7cb15bfbf13b6d"
 }
 
 variable "aws_ami_centos_arm64_id" {
