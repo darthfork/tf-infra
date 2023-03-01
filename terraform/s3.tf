@@ -6,10 +6,12 @@ resource "aws_s3_bucket" "tf-management-trail" {
   bucket        = "tf-management-trail"
   force_destroy = true
 
-  logging {
-    target_bucket = aws_s3_bucket.tf-backend.id
-    target_prefix = "log/"
-  }
+}
+
+resource "aws_s3_bucket_logging" "tf-backend-logging" {
+  bucket        = aws_s3_bucket.tf-management-trail.id
+  target_bucket = aws_s3_bucket.tf-backend.id
+  target_prefix = "log/"
 }
 
 resource "aws_s3_bucket_policy" "tf-backend-policy" {
