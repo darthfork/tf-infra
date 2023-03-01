@@ -1,18 +1,29 @@
 data "aws_ami" "centos" {
   owners      = [var.aws_ami_owner_id]
   most_recent = true
+
   filter {
-    name   = "image-id"
-    values = [var.aws_ami_centos_x86_64_id]
+    name   = "name"
+    values = ["CentOS 8.*"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
   }
 }
 
 data "aws_ami" "centos_arm64" {
   owners      = [var.aws_ami_owner_id]
   most_recent = true
+
   filter {
-    name   = "image-id"
-    values = [var.aws_ami_centos_arm64_id]
+    name   = "name"
+    values = ["CentOS 8.*"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["arm64"]
   }
 }
-

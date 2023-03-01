@@ -38,16 +38,6 @@ variable "aws_ami_owner_id" {
   default = "125523088429"
 }
 
-variable "aws_ami_centos_x86_64_id" {
-  type    = string
-  default = "ami-05d7cb15bfbf13b6d"
-}
-
-variable "aws_ami_centos_arm64_id" {
-  type    = string
-  default = "ami-061a486e54da518df"
-}
-
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_account_number" {}
