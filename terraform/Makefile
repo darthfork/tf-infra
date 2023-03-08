@@ -6,7 +6,10 @@ init:
 	$(TF_BIN) init
 
 plan:
-	$(TF_BIN) plan -var-file terraform.tfvars -out CURRENTPLAN.tfplan
+	$(TF_BIN) plan\
+		-input=false\
+		-var-file terraform.tfvars\
+		-out CURRENTPLAN.tfplan
 
 plan_nc:
 	$(TF_BIN) plan\
@@ -16,7 +19,9 @@ plan_nc:
 		-out CURRENTPLAN.tfplan
 
 apply:
-	$(TF_BIN) apply -auto-approve -var-file terraform.tfvars
+	$(TF_BIN) apply\
+		-auto-approve\
+		-var-file terraform.tfvars
 
 destroy:
 	$(TF_BIN) destroy
