@@ -8,6 +8,7 @@ on:
 jobs:
   terraform_apply:
     name: Terraform Plan and Apply
+    environment: production
     runs-on: ubuntu-20.04
     env:
       DO_TOKEN: ${{ secrets.DO_TOKEN }}
