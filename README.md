@@ -1,3 +1,3 @@
 # Terraform Infrastructure
 
-Infrastructure on AWS and Digital Ocean managed with terraform
+Basic Terraform Infrastructure for spinning up Development VMs on AWS or DigitalOcean
