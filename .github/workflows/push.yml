@@ -1,9 +1,12 @@
 name: Push Commit
-# Run terraform plan and terraform apply on commits to master
+# Run terraform plan and terraform apply on commits to main
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - 'main'
+    paths:
+      - '**.tf'
 
 jobs:
   terraform_apply:
