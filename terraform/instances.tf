@@ -16,7 +16,7 @@ resource "aws_instance" "dev" {
     volume_size = var.aws_instance_block_size
   }
   tags = {
-    Name = "amd64_dev"
+    Name = "x86_dev"
     arch = "amd64"
   }
 }

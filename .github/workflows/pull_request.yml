@@ -1,10 +1,12 @@
 name: Pull Request
-# Run terraform plan on pull requests to master
+# Run terraform plan on pull requests to main
 
 on:
   pull_request:
-    branches: [ master ]
-
+    branches:
+      - 'main'
+    paths:
+      - '**.tf'
 
 jobs:
   terraform_plan:
