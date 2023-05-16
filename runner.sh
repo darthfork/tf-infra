@@ -33,6 +33,7 @@ if [ -z "$ACTION" ]; then
     exit 1
 fi
 
+# shellcheck disable=SC2086
 docker run -it\
     -v "$PWD":/darthfork/workspace\
     -e AWS_ACCESS_KEY_ID\
