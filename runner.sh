@@ -23,6 +23,7 @@ declare -A actions=(
     [apply]="make -C ${TF_DIR} apply"
     [destroy]="make -C ${TF_DIR} destroy"
     [fmt]="make -C ${TF_DIR} fmt"
+    [clean]="make -C ${TF_DIR} clean"
 )
 
 ACTION=${actions[$TARGET]}
