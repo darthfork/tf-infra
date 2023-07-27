@@ -5,7 +5,7 @@ resource "aws_iam_instance_profile" "dev_instance_profile" {
 
 resource "aws_instance" "dev" {
   count                  = var.enable_aws_amd64_dev ? 1 : 0
-  ami                    = data.aws_ami.centos.id
+  ami                    = data.aws_ami.centos_x86.id
   instance_type          = "t2.micro"
   iam_instance_profile   = aws_iam_instance_profile.dev_instance_profile.name
   user_data              = file("user_data.sh")

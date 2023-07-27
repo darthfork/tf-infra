@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-usage() {
+function usage() {
 cat <<EOF
 Usage: $0 action
 

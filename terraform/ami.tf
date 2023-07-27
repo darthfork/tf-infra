@@ -1,10 +1,10 @@
-data "aws_ami" "centos" {
+data "aws_ami" "centos_x86" {
   owners      = [var.aws_ami_owner_id]
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["CentOS 8.*"]
+    values = ["CentOS Stream 8*"]
   }
 
   filter {
@@ -19,7 +19,7 @@ data "aws_ami" "centos_arm64" {
 
   filter {
     name   = "name"
-    values = ["CentOS 8.*"]
+    values = ["CentOS Stream 8*"]
   }
 
   filter {
