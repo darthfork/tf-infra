@@ -18,6 +18,12 @@ resource "aws_iam_role" "github_oidc_role" {
         Principal = {
           Federated = "arn:aws:iam::${var.aws_account_number}:oidc-provider/token.actions.githubusercontent.com"
         },
+        Condition = {
+          StringEquals = {
+            "token.actions.githubusercontent.com:sub": "repo: <aws-samples/EXAMPLEREPO>:ref:refs/heads/<ExampleBranch>",
+            "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+          }
+        },
       },
     ]
   })
@@ -36,12 +42,6 @@ resource "aws_iam_role" "dev_instance_role" {
         Principal = {
           Service = "ec2.amazonaws.com"
         },
-        Condition = {
-          StringEquals = {
-            "token.actions.githubusercontent.com:sub": "repo: <aws-samples/EXAMPLEREPO>:ref:refs/heads/<ExampleBranch>",
-            "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
-          }
-        }
       },
     ]
   })
