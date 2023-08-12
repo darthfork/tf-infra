@@ -38,8 +38,22 @@ variable "aws_ami_owner_id" {
   default = "125523088429"
 }
 
-variable "aws_access_key" {}
-variable "aws_secret_key" {}
-variable "aws_account_number" {}
-variable "do_token" {}
-variable "ssh_fingerprint" {}
+variable "aws_access_key" {
+  type = string
+}
+
+variable "aws_secret_key" {
+  type = string
+}
+
+variable "aws_account_number" {
+  type = string
+}
+
+variable "do_token" {
+  type = string
+}
+
+variable "ssh_fingerprint" {
+  type = string
+}
