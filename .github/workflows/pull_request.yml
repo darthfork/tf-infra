@@ -42,7 +42,6 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v1.7.0
       with:
         role-to-assume: arn:aws:iam::408911611184:role/github_oidc_role
-        role-session-name: tf-infra
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Terraform Init
