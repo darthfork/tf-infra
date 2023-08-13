@@ -20,7 +20,7 @@ resource "aws_iam_role" "github_oidc_role" {
         },
         Condition = {
           StringEquals = {
-            "token.actions.githubusercontent.com:sub": "repo: <aws-samples/EXAMPLEREPO>:ref:refs/heads/<ExampleBranch>",
+            "token.actions.githubusercontent.com:sub": "repo:darthfork/tf-infra:*",
             "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
           }
         },
