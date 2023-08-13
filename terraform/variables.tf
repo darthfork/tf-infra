@@ -48,6 +48,7 @@ variable "aws_secret_key" {
 
 variable "aws_account_number" {
   type = string
+  default = "408911611184"
 }
 
 variable "do_token" {

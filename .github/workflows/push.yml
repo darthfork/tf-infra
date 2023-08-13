@@ -16,8 +16,6 @@ jobs:
     env:
       DO_TOKEN: ${{ secrets.DO_TOKEN }}
       SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
 
     defaults:
@@ -36,14 +34,20 @@ jobs:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
         terraform_version: 1.4.6
 
-    - name: Terraform Init
-      id: init
-      run: make -C terraform init
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_NUMER }}:role/github_oidc_role
+        aws-region: ${{ env.AWS_REGION }}
 
     - name: Build Vars
       id: vars
       shell: bash
       run: ./build_tfvars.sh
+
+    - name: Terraform Init
+      id: init
+      run: make -C terraform init
 
     - name: Terraform Plan
       id: plan
