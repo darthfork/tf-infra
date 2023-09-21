@@ -20,7 +20,9 @@ resource "aws_iam_role" "github_oidc_role" {
         },
         Condition = {
           StringLike = {
-            "token.actions.githubusercontent.com:sub": "repo:darthfork/tf-infra:*",
+            "token.actions.githubusercontent.com:sub": [
+              "repo:darthfork/tf-infra:*"
+            ]
           },
           StringEquals = {
             "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
@@ -29,6 +31,30 @@ resource "aws_iam_role" "github_oidc_role" {
       },
     ]
   })
+}
+
+resource "aws_iam_policy" "github_oidc_policy" {
+  name = "github_oidc_policy"
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect = "Allow",
+        Action = [
+          "secretsmanager:GetSecretValue",
+          "sts:AssumeRole",
+          "s3:PutObject",
+          "s3:GetObject",
+          "s3:DeleteObjectVersion",
+          "s3:ListBucket",
+          "s3:DeleteObject",
+          "s3:PutObjectAcl"
+        ],
+        Resource = ["*"]
+      },
+    ]
+  })
+
 }
 
 resource "aws_iam_role" "dev_instance_role" {
