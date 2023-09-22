@@ -23,6 +23,7 @@ provider "aws" {
   region     = var.aws_region
   assume_role {
     role_arn     = "arn:aws:iam::408911611184:role/github_oidc_role"
+    session_name = "tf-infra"
   }
   allowed_account_ids = [
     var.aws_account_number,
