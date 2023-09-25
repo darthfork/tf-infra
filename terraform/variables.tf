@@ -1,8 +1,3 @@
-locals {
-  vpc_id    = "vpc-63a2b319"
-  user_name = "arai"
-}
-
 variable "aws_region" {
   type    = string
   default = "us-east-1"

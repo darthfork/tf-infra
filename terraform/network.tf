@@ -1,3 +1,7 @@
+locals {
+  vpc_id = "vpc-63a2b319"
+}
+
 resource "aws_security_group" "main" {
   name        = "main"
   description = "Default SG for instances"
