@@ -1,6 +1,7 @@
 locals {
   user_name = "arai"
 }
+
 resource "aws_s3_bucket" "tf-backend" {
   bucket = "tf-backend-abhishek"
 }

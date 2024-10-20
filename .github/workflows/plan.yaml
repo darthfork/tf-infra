@@ -1,5 +1,4 @@
-name: Pull Request
-# Run terraform plan on pull requests to main
+name: Terraform Plan
 
 on:
   pull_request:
@@ -11,7 +10,7 @@ on:
 jobs:
   terraform_plan:
     name: Terraform Plan
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     env:
       DO_TOKEN: ${{ secrets.DO_TOKEN }}
       SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
