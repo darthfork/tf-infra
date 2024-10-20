@@ -53,7 +53,7 @@ jobs:
       id: publish
       uses: actions/github-script@v6
       env:
-        STDOUT: "```${{ steps.plan.outputs.stdout }}```"
+        STDOUT: "```${{ steps.apply.outputs.stdout }}```"
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
