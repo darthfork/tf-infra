@@ -46,7 +46,7 @@ jobs:
 
     - name: Terraform Plan
       id: plan
-      run: make -C terraform plan_nc
+      run: make -C terraform plan_ci
 
     - name: Terraform Publish
       id: publish

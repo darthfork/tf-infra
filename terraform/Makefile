@@ -14,7 +14,7 @@ plan: ## Run Terraform plan
 		-var-file terraform.tfvars\
 		-out CURRENTPLAN.tfplan
 
-plan_nc:
+plan_ci:
 	$(TF_BIN) plan\
 		-input=false\
 		-no-color\
@@ -24,6 +24,12 @@ plan_nc:
 apply: ## Apply Terraform changes
 	$(TF_BIN) apply\
 		-auto-approve\
+		-var-file terraform.tfvars
+
+apply_ci:
+	$(TF_BIN) apply\
+		-auto-approve\
+		-no-color\
 		-var-file terraform.tfvars
 
 destroy: ## Destroy resources

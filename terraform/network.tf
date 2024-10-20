@@ -4,7 +4,7 @@ locals {
 
 resource "aws_security_group" "main" {
   name        = "main"
-  description = "Default SG for instances"
+  description = "Default Security Group for instances"
   vpc_id      = local.vpc_id
 
   ingress {
