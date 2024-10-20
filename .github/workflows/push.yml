@@ -47,7 +47,7 @@ jobs:
 
     - name: Terraform Apply
       id: apply
-      run: make -C terraform apply
+      run: make -C terraform apply_ci
 
     - name: Terraform Publish
       id: publish
