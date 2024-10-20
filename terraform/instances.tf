@@ -5,14 +5,14 @@ resource "aws_iam_instance_profile" "dev_instance_profile" {
 
 resource "aws_instance" "dev" {
   count                  = var.enable_aws_amd64_dev ? 1 : 0
-  ami                    = data.aws_ami.centos_x86.id
+  ami                    = data.aws_ami.debian_x86.id
   instance_type          = "t2.micro"
   iam_instance_profile   = aws_iam_instance_profile.dev_instance_profile.name
   user_data              = file("user_data.sh")
   key_name               = "main"
   vpc_security_group_ids = [aws_security_group.main.id]
   ebs_block_device {
-    device_name = "/dev/sda1"
+    device_name = "/dev/xvda"
     volume_size = var.aws_instance_block_size
   }
   tags = {
@@ -23,14 +23,14 @@ resource "aws_instance" "dev" {
 
 resource "aws_instance" "arm64_dev" {
   count                  = var.enable_aws_arm64_dev ? 1 : 0
-  ami                    = data.aws_ami.centos_arm64.id
+  ami                    = data.aws_ami.debian_arm64.id
   instance_type          = "a1.medium"
   iam_instance_profile   = aws_iam_instance_profile.dev_instance_profile.name
   user_data              = file("user_data.sh")
   key_name               = "main"
   vpc_security_group_ids = [aws_security_group.main.id]
   ebs_block_device {
-    device_name = "/dev/sda1"
+    device_name = "/dev/xvda"
     volume_size = var.aws_instance_block_size
   }
   tags = {
