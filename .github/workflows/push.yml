@@ -45,10 +45,6 @@ jobs:
       shell: bash
       run: ./build_tfvars.sh
 
-    - name: Terraform Plan
-      id: plan
-      run: make -C terraform plan_nc
-
     - name: Terraform Apply
       id: apply
       run: make -C terraform apply

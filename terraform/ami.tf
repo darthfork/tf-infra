@@ -1,10 +1,10 @@
-data "aws_ami" "debian_x86" {
+data "aws_ami" "centos_x86" {
   owners      = [var.aws_ami_owner_id]
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["debian-12*"]
+    values = ["CentOS Stream 8*"]
   }
 
   filter {
@@ -13,13 +13,13 @@ data "aws_ami" "debian_x86" {
   }
 }
 
-data "aws_ami" "debian_arm64" {
+data "aws_ami" "centos_arm64" {
   owners      = [var.aws_ami_owner_id]
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["debian-12*"]
+    values = ["CentOS Stream 8*"]
   }
 
   filter {
