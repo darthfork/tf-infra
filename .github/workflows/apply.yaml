@@ -1,5 +1,4 @@
-name: Push Commit
-# Run terraform plan and terraform apply on commits to main
+name: Terraform Apply
 
 on:
   push:
@@ -10,9 +9,9 @@ on:
 
 jobs:
   terraform_apply:
-    name: Terraform Plan and Apply
+    name: Terraform Apply
     environment: production
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     env:
       DO_TOKEN: ${{ secrets.DO_TOKEN }}
       SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
