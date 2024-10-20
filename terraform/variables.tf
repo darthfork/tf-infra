@@ -10,7 +10,7 @@ variable "do_region" {
 
 variable "enable_aws_amd64_dev" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "enable_aws_arm64_dev" {
@@ -30,7 +30,7 @@ variable "aws_instance_block_size" {
 
 variable "aws_ami_owner_id" {
   type    = string
-  default = "125523088429"
+  default = "136693071363"
 }
 
 variable "aws_access_key" {}
