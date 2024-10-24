@@ -6,6 +6,7 @@ Basic Terraform Infrastructure for spinning up Development VMs on AWS or Digital
 
 To use this Terraform Infrastructure, you will need to have the following environment variables set:
 
+- `AWS_USERNAME`: AWS Username
 - `AWS_ACCESS_KEY_ID`: AWS Access Key ID for your account
 - `AWS_SECRET_ACCESS_KEY`: AWS Secret Access Key for your account
 - `AWS_ACCOUNT_NUMBER`: AWS Account Number

@@ -3,7 +3,7 @@ terraform {
     bucket         = "tf-infra-backend-bucket"
     key            = "terraform/terraform.tfstate"
     dynamodb_table = "tf-state-lock"
-    region         = "us-east-1"
+    region         = "us-west-1"
   }
   required_version = "~> 1.9.8"
   required_providers {
