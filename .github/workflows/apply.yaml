@@ -35,14 +35,13 @@ jobs:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
         terraform_version: 1.9.8
 
+    - name: Terraform Vars
+      id: vars
+      run: make -C terraform vars
+
     - name: Terraform Init
       id: init
       run: make -C terraform init
-
-    - name: Build Vars
-      id: vars
-      shell: bash
-      run: ./build_tfvars.sh
 
     - name: Terraform Apply
       id: apply
