@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "tf-backend" {
-  bucket = var.backend_bucket
+resource "aws_s3_bucket" "tf-backend-bucket" {
+  bucket = var.backend_bucket_name
 }
 
 resource "aws_s3_bucket" "tf-management-trail" {
@@ -10,12 +10,12 @@ resource "aws_s3_bucket" "tf-management-trail" {
 
 resource "aws_s3_bucket_logging" "tf-backend-logging" {
   bucket        = aws_s3_bucket.tf-management-trail.id
-  target_bucket = aws_s3_bucket.tf-backend.id
+  target_bucket = aws_s3_bucket.tf-backend-bucket.id
   target_prefix = "log/"
 }
 
 resource "aws_s3_bucket_policy" "tf-backend-policy" {
-  bucket = aws_s3_bucket.tf-backend.id
+  bucket = aws_s3_bucket.tf-backend-bucket.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -24,7 +24,7 @@ resource "aws_s3_bucket_policy" "tf-backend-policy" {
         Effect    = "Allow"
         Principal = "*"
         Action    = "s3:ListBucket",
-        Resource  = aws_s3_bucket.tf-backend.arn
+        Resource  = aws_s3_bucket.tf-backend-bucket.arn
       },
       {
         Effect = "Allow",
@@ -38,7 +38,7 @@ resource "aws_s3_bucket_policy" "tf-backend-policy" {
           "s3:GetObject",
           "s3:PutObject"
         ],
-        Resource = "${aws_s3_bucket.tf-backend.arn}/terraform/terraform.tfstate"
+        Resource = "${aws_s3_bucket.tf-backend-bucket.arn}/terraform/terraform.tfstate"
       }
     ]
   })
@@ -78,7 +78,7 @@ resource "aws_s3_bucket_policy" "tf-management-trail-policy" {
 }
 
 resource "aws_s3_bucket_public_access_block" "tf-backend-public-access-block" {
-  bucket = aws_s3_bucket.tf-backend.id
+  bucket = aws_s3_bucket.tf-backend-bucket.id
 
   block_public_acls       = true
   block_public_policy     = true

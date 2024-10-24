@@ -8,8 +8,8 @@ variable "vpc_id" {
   type = string
 }
 
-variable "backend_bucket" {
-  default = "tf-backend-abhishek"
+variable "backend_bucket_name" {
+  default = "tf-infra-backend-bucket"
   type    = string
 }
 
