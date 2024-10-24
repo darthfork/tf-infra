@@ -41,8 +41,7 @@ jobs:
 
     - name: Build Vars
       id: vars
-      shell: bash
-      run: ./build_tfvars.sh
+      run: make -C terraform vars
 
     - name: Terraform Apply
       id: apply
