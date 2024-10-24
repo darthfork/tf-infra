@@ -13,6 +13,12 @@ VERSION=fedora40
 IMAGE="darthfork/dorker:$VERSION"
 
 TARGET=$1
+
+if [ -z "$TARGET" ]; then
+    usage
+    exit 1
+fi
+
 TF_DIR=terraform
 
 declare -A actions=(
@@ -29,7 +35,7 @@ declare -A actions=(
 ACTION=${actions[$TARGET]}
 
 if [ -z "$ACTION" ]; then
-    echo "Invalid action"
+    printf "Invalid action: %s\n" "$TARGET"
     usage
     exit 1
 fi
