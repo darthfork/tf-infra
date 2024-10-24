@@ -1,9 +1,5 @@
-locals {
-  user_name = "arai"
-}
-
 resource "aws_s3_bucket" "tf-backend" {
-  bucket = "tf-backend-abhishek"
+  bucket = var.backend_bucket
 }
 
 resource "aws_s3_bucket" "tf-management-trail" {
@@ -34,7 +30,7 @@ resource "aws_s3_bucket_policy" "tf-backend-policy" {
         Effect = "Allow",
         Principal = {
           "AWS" : [
-            "arn:aws:iam::${var.aws_account_number}:user/${local.user_name}",
+            "arn:aws:iam::${var.aws_account_number}:user/${var.user_name}",
             "arn:aws:iam::${var.aws_account_number}:root"
           ]
         },
