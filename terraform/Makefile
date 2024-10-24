@@ -1,9 +1,12 @@
 .PHONY: help init vars plan apply destroy fmt clean
 
-TF_BIN	:= terraform
+TF_BIN		:= terraform
+COLOR_TARGET	:= \033[36m # Cyan
+COLOR_MESSAGE	:= \033[0m # No color (reset)
 
-help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
+help: ## Show this help message
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) |\
+		awk 'BEGIN {FS = ":.*?## "}; {printf "$(COLOR_TARGET)%-15s$(COLOR_MESSAGE) %s\n", $$1, $$2}'
 
 init: ## Initialize terraform workspace
 	$(TF_BIN) init

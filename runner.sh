@@ -21,15 +21,18 @@ fi
 
 TF_DIR=terraform
 
+MAKE="make --no-print-directory -C ${TF_DIR}"
+
 declare -A actions=(
     [shell]="/usr/bin/env bash"
-    [init]="make -C ${TF_DIR} init"
-    [vars]="make -C ${TF_DIR} vars"
-    [plan]="make -C ${TF_DIR} plan"
-    [apply]="make -C ${TF_DIR} apply"
-    [destroy]="make -C ${TF_DIR} destroy"
-    [fmt]="make -C ${TF_DIR} fmt"
-    [clean]="make -C ${TF_DIR} clean"
+    [help]="${MAKE} help"
+    [init]="${MAKE} init"
+    [vars]="${MAKE} vars"
+    [plan]="${MAKE} plan"
+    [apply]="${MAKE} apply"
+    [destroy]="${MAKE} destroy"
+    [fmt]="${MAKE} fmt"
+    [clean]="${MAKE} clean"
 )
 
 ACTION=${actions[$TARGET]}

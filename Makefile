@@ -2,7 +2,7 @@
 
 .DEFAULT_GOAL := all
 
-TARGETS	:= init vars plan apply destroy fmt clean
+TARGETS	:= shell help init vars plan apply destroy fmt clean
 TF_DIR	:= terraform
 RUNNER	:= ${CURDIR}/runner.sh
 
@@ -12,6 +12,8 @@ $(TARGETS):
 all:
 	@echo "Please specify a target: "
 	@$(MAKE) --no-print-directory -C $(TF_DIR) help
+
+init: vars
 
 plan: vars init
 
