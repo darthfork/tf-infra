@@ -1,11 +1,7 @@
 name: Terraform Apply
 
 on:
-  push:
-    branches:
-      - 'main'
-    paths:
-      - '**.tf'
+  workflow_dispatch:
 
 jobs:
   terraform_apply:
@@ -15,6 +11,7 @@ jobs:
     env:
       DO_TOKEN: ${{ secrets.DO_TOKEN }}
       SSH_FINGERPRINT: ${{ secrets.SSH_FINGERPRINT }}
+      AWS_USERNAME: ${{ secrets.AWS_USERNAME }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
@@ -27,6 +24,8 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        ref: my-branch
 
     - name: Setup Terraform
       id: setup

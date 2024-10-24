@@ -1,13 +1,3 @@
-variable  "user_name" {
-  default = "arai"
-  type    = string
-}
-
-variable "vpc_id" {
-  default = "vpc-63a2b319"
-  type = string
-}
-
 variable "backend_bucket_name" {
   default = "tf-infra-backend-bucket"
   type    = string
@@ -16,12 +6,19 @@ variable "backend_bucket_name" {
 variable "aws_access_key" {
   type = string
 }
+
 variable "aws_secret_key" {
   type = string
 }
+
 variable "aws_account_number" {
   type = string
 }
+
+variable  "aws_username" {
+  type  = string
+}
+
 variable "do_token" {
   type = string
 }
@@ -41,7 +38,7 @@ variable "do_region" {
 
 variable "enable_aws_amd64_dev" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "enable_aws_arm64_dev" {

@@ -14,6 +14,7 @@ init: ## Initialize terraform workspace
 vars: clean ## Build terraform.tfvars file
 	@echo 'do_token           = "${DO_TOKEN}"' > terraform.tfvars
 	@echo 'ssh_fingerprint    = "${SSH_FINGERPRINT}"' >> terraform.tfvars
+	@echo 'aws_username       = "${AWS_USERNAME}"' >> terraform.tfvars
 	@echo 'aws_access_key     = "${AWS_ACCESS_KEY_ID}"' >> terraform.tfvars
 	@echo 'aws_secret_key     = "${AWS_SECRET_ACCESS_KEY}"' >> terraform.tfvars
 	@echo 'aws_account_number = "${AWS_ACCOUNT_NUMBER}"' >> terraform.tfvars

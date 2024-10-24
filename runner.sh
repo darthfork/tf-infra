@@ -46,6 +46,7 @@ fi
 # shellcheck disable=SC2086
 docker run -it\
     -v "$PWD":/darthfork/workspace\
+    -e AWS_USERNAME\
     -e AWS_ACCESS_KEY_ID\
     -e AWS_SECRET_ACCESS_KEY\
     -e DO_TOKEN\

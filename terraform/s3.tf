@@ -1,5 +1,6 @@
 resource "aws_s3_bucket" "tf-backend-bucket" {
   bucket = var.backend_bucket_name
+  force_destroy = true
 }
 
 resource "aws_s3_bucket" "tf-management-trail" {
@@ -30,7 +31,7 @@ resource "aws_s3_bucket_policy" "tf-backend-policy" {
         Effect = "Allow",
         Principal = {
           "AWS" : [
-            "arn:aws:iam::${var.aws_account_number}:user/${var.user_name}",
+            "arn:aws:iam::${var.aws_account_number}:user/${var.aws_username}",
             "arn:aws:iam::${var.aws_account_number}:root"
           ]
         },
