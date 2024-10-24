@@ -1,11 +1,7 @@
-locals {
-  vpc_id = "vpc-63a2b319"
-}
-
 resource "aws_security_group" "main" {
   name        = "main"
   description = "Default Security Group for instances"
-  vpc_id      = local.vpc_id
+  vpc_id      = var.vpc_id
 
   ingress {
     cidr_blocks = ["0.0.0.0/0"]

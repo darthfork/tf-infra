@@ -1,3 +1,18 @@
+variable  "user_name" {
+  default = "arai"
+  type    = string
+}
+
+variable "vpc_id" {
+  default = "vpc-63a2b319"
+  type = string
+}
+
+variable "backend_bucket" {
+  default = "tf-backend-abhishek"
+  type    = string
+}
+
 variable "aws_access_key" {
   type = string
 }
