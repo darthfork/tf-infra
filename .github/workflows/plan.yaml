@@ -42,9 +42,6 @@ jobs:
       id: init
       run: make -C terraform init
 
-    - name: debug
-      run: cat terraform/terraform.tfvars
-
     - name: Terraform Plan
       id: plan
       run: make -C terraform plan_ci
