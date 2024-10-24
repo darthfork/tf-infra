@@ -42,6 +42,9 @@ jobs:
       id: vars
       run: make -C terraform vars
 
+    - name: debug
+      run: cat terraform/terraform.tfvars
+
     - name: Terraform Plan
       id: plan
       run: make -C terraform plan_ci
